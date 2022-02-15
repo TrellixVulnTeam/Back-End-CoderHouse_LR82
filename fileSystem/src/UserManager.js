@@ -77,13 +77,18 @@ class UserManager{
         }
     }
     deleteUser = async (id) =>{
-        if(!id) return {status:"error", error:"Necesito la ID."}
-        if(fs.existsSync(pathToUsers)){
-            let data = await fs.promises.readFile(pathToUsers, 'utf-8')
-            let users = JSON.parse(data)
-            let newUsers = users.filter(user=user.id!==id)
-            await fs.promises.writeFile(pathToUsers, JSON.stringify(newUsers, null, 2))
-            return {status:"terminado", message:"Usuario Eliminado"}
+        try {
+            if(!id) return {status:"error", error:"Necesito la ID."}
+            if(fs.existsSync(pathToUsers)){
+                let data = await fs.promises.readFile(pathToUsers, 'utf-8')
+                let users = JSON.parse(data)
+                let newUsers = users.filter(user=>user.id!==id)
+                await fs.promises.writeFile(pathToUsers, JSON.stringify(newUsers, null, 2))
+                return {status:"terminado", message:"Usuario Eliminado"}
+            }
+            
+        } catch (error) {
+            console.log(error)
         }
     }
 }

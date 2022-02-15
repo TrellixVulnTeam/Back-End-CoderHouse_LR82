@@ -16,6 +16,6 @@ let user ={
 
 //userService.findById(2).then(result=>console.log(result))
 
-userService.updateUser(2, user).then(result=>console.log(result))
+//userService.updateUser(2, user).then(result=>console.log(result))
 
-//userService.deleteUser(2).then(result=>console.log(result))
+userService.deleteUser(3).then(result=>console.log(result))
