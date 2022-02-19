@@ -18,4 +18,4 @@ let user ={
 
 //userService.updateUser(2, user).then(result=>console.log(result))
 
-userService.deleteUser(3).then(result=>console.log(result))
+//userService.deleteUser(3).then(result=>console.log(result))
