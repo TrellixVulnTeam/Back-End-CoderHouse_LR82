@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Mochila",
+    "category": "Mochila",
+    "brand": "Nike",
+    "color": "Marron",
+    "price": 8000,
+    "size": "XL",
+    "id": 1
+  },
+  {
+    "name": "Adidis",
+    "category": "Remera",
+    "brand": "Addidas",
+    "color": "Azul",
+    "price": 3000,
+    "size": "L",
+    "id": 2
+  },
+  {
+    "name": "Shorti",
+    "category": "Pantalon",
+    "brand": "Nike",
+    "color": "Negro",
+    "price": 4000,
+    "size": "S",
+    "id": 3
+  }
+  
+]
