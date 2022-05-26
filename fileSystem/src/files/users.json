@@ -22,5 +22,13 @@
     "age": 25,
     "mail": "valen.tixeira@gmail.com",
     "id": 4
+  },
+  {
+    "first_name": "Valentin",
+    "last_name": "Tixeira",
+    "username": "LordSyrs",
+    "age": 25,
+    "mail": "valen.tixeira@gmail.com",
+    "id": 5
   }
 ]
