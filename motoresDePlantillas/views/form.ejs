@@ -19,7 +19,7 @@
           </div>
           <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" class="form-control" name="foto">
+            <input type="url" class="form-control" name="foto">
           </div>
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -41,7 +41,7 @@
                   <th scope="row"><%= index + 1%></th>
                   <td><%= producto.nombre %></td>
                   <td><%= producto.precio %></td>
-                  <td><img src="<%= producto.foto %>" alt=""></td>
+                  <td><img class="img-fluid" src="<%= producto.foto %>" alt=""></td>
                 </tr>
                 <% }) %>
                 
