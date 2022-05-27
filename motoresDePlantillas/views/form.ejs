@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+</head>
+<body>
+  <div class="container">
+    <main>
+      <div class="jumbotron">
+        <h2>Ingrese su Producto</h2>
+        <form method="POST" action="/productos">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre">
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="text" class="form-control" name="precio">
+          </div>
+          <div class="form-group">
+            <label for="foto">Foto</label>
+            <input type="file" class="form-control" name="foto">
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        <div>
+          <% if (productos.length) { %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Foto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% productos.forEach((producto, index) => { %>
+                <tr>
+                  <th scope="row"><%= index + 1%></th>
+                  <td><%= producto.nombre %></td>
+                  <td><%= producto.precio %></td>
+                  <td><img src="<%= producto.foto %>" alt=""></td>
+                </tr>
+                <% }) %>
+                
+              </tbody>
+            </table>
+          <% } else { %>
+            No se encontraron datos
+          <% } %>
+
+        </div>
+      </div>
+    </main>
+  </div>
+  
+</body>
+</html>

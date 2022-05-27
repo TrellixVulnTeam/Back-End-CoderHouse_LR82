@@ -8,13 +8,25 @@ app.set('views', './views')
 // app.set('view engine', 'pug')
 app.set('view engine', 'ejs')
 
+const productos = []
 
 app.get('', (req, res) => {
-  const data = {
-    comision: 30965
-  }
-  return res.render('index', data)
+    const data = {
+        productos
+    }
+  return res.render('form', data)
 })
+
+app.post('/productos', (req, res) => {
+    const producto = {
+      nombre: req.body.nombre,
+      precio: req.body.precio,
+      foto: req.body.foto
+    }
+    productos.push(producto)
+  
+    return res.redirect('/')
+  })
 
 
 const PORT =8080
