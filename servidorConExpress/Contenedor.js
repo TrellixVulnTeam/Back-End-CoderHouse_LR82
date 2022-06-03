@@ -3,6 +3,8 @@ const fs = require('fs')
 
 const pathToProducts = './files/products.json'
 class Contenedor {
+
+    
     createProduct = async (product) => {
         try {
             if(fs.existsSync(pathToProducts)){
@@ -12,7 +14,7 @@ class Contenedor {
                 product.id = id
                 products.push(product)
                 await fs.promises.writeFile(pathToProducts, JSON.stringify(products, null, 2))
-                return {status: "success", message: "Usuario Registrado!"}
+                return {status: "success", message: "Producto Creado!"}
             }else {
                 product.id = 1
                 await fs.promises.writeFile(pathToProducts,JSON.stringify([product], null, 2))

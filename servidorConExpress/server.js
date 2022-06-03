@@ -28,4 +28,3 @@ server.get('/productoRandom', async (req,res) => {
     res.send(randomProduct.data)
 })
 
-S
