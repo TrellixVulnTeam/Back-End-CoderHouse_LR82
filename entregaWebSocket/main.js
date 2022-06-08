@@ -26,18 +26,56 @@ app.get('/', (req,res)=>{
 return res.render('productos', data)
 
 })
- 
+
+
+
 app.post('/productos', (req, res) => {
   
-  const producto = {
-    nombre: req.body.nombre,
-    precio: req.body.precio,
-    foto: req.body.foto
+  const userForm = document.getElementById('userForm')
+
+  fetch('http://localhost:8080/productos')
+  .then(response => response.json())
+  .then(users => {
+    console.log(users)
+  })
+  .catch(e => console.error(e))
+
+  userForm.addEventListener('submit'), (e) => {
+    e.preventDefault()
+    const name = document.getElementById('name')
+    const precio = document.getElementById('precio')
+    const foto = document.getElementById('foto')
   }
-  productos.push(producto)
+  const user = {
+    name: name.value,
+    precio: precio.value,
+    foto: foto.value,
+  }
+
+  fetch('http://localhost:8080/form', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+  .then(response => response.json())
+  .then(data => {
+    h4.innerHTML = 'Usuario creado correctamente'
+    name.value = ''
+    lastname.value = ''
+    age.value = ''
+  })
+  .catch(e => console.error(e))
+  
+  return res.redirect(`/`)
+})
+
+app.post ('/chat', (req, res) => {
+
   const { username } = req.body
 
-  return res.redirect(`/`)
+  return res.redirect(`/chat?username=${username}`)
 })
 
 // Rutas de chat 

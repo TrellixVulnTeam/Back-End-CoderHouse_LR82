@@ -9,24 +9,25 @@
   <link rel="stylesheet" href="./login.css">
 </head>
 <body>
+  
   <div class="container">
     <main>
       <div class="jumbotron">
         <h2>Ingrese su Producto</h2>
-        <form method="POST" action="/productos">
+        <form method="POST" id="userForm" action="/productos">
           <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre">
+            <label  for="nombre">Nombre</label>
+            <input id="name" type="text" class="form-control" name="nombre">
           </div>
           <div class="form-group">
-            <label for="precio">Precio</label>
-            <input type="number" class="form-control" name="precio">
+            <label  for="precio">Precio</label>
+            <input id="precio" type="number" class="form-control" name="precio">
           </div>
           <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="url" class="form-control" name="foto">
+            <input id="foto" type="url" class="form-control" name="foto">
           </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button  type="submit" class="btn btn-primary">Enviar</button>
         </form>
 
         <div>
@@ -41,6 +42,12 @@
                 </tr>
               </thead>
               <tbody>
+                <% console.log('hola') %> 
+
+
+
+
+
                 <% productos.forEach((producto, index) => { %>
                 <tr>
                   <th scope="row"><%= index + 1%></th>
@@ -63,7 +70,7 @@
       <div class="container-fluid h-custom">
         <div class="row d-flex h-100">
           <div class="col-md-8 col-lg-6 col-xl-4">
-            <form action="/productos" method="POST">
+            <form action="/chat" method="POST">
               <div class="d-flex flex-row">
                 <p class="centerOfMessage">Centro de mensajes</p>
               </div>
@@ -88,5 +95,6 @@
       <%- include('partials/footer') %>
     </section>
   </div>
+  
 </body>
 </html>
