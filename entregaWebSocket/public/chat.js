@@ -68,3 +68,4 @@ sendMessage.addEventListener('click', () => {
     socket.emit('messageInput', messageInput.value)
     messageInput.value = ''
 })
+
