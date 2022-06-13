@@ -1,12 +1,33 @@
 const express = require('express')
-const { Server: HttpServer } = require('http')
+const productos = require('./carrito/productos')
+const carrito = require("./carrito/carrito")
 const app = express()
-const httpServer = new HttpServer(app)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('./public'))
+
+const publicPath = `${__dirname}/public`
+
+app.use('/static', express.static(publicPath))
+
+app.get('/', (req, res) => {
+    return res.json({ 
+        status: 'ok'
+    })
+})
+
+app.use('/api/productos', productos)
+app.use('/api/carrito', carrito)
 
 const PORT = 8080
 
-httpServer.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`))
+const server = app.listen(PORT, () => {
+    console.log(`server on in port ${PORT}`)
+})
+
+server.on('error', error => console.log(`Error server: ${error}`))
+
+// ADMIN
+const Admin = false
+
+
