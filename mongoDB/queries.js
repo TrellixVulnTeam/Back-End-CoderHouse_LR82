@@ -38,3 +38,5 @@ db.products.insertOne({ name: "Fanta", precio: 13, inStock: true })
 // insert con tipo de dato Date
 
 db.products.insertOne({ name: "Sprite", precio: 11, inStock: false, date: new Date() })
+
+
