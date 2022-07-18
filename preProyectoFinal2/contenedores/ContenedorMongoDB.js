@@ -5,7 +5,7 @@ class ContenedorMongoDB {
         this.productsModel = require('../models/productos')
     }
   
-    findAll(data) {
+    findAll() {
         return this.mongodb
         .then(_ => this.productsModel.find({}))
         .then(producto => console.log(producto))
@@ -13,7 +13,10 @@ class ContenedorMongoDB {
     }
   
     find(id) {
-  
+        return this.mongodb
+        .then(_ => this.productsModel.findOne({ _id: (id) }))
+        .then(producto => console.log(producto))
+        .catch(err => console.error(`Error: ${err.message}`))
     }
   
     create(data) {
@@ -25,12 +28,28 @@ class ContenedorMongoDB {
 
     }
   
-    update() {
-  
+    update(name, price) {
+        return this.mongodb
+        .then(_ => {
+            return this.productsModel.updateOne({
+              name: (name)
+            }, {
+              $set: { price: (price) }
+            })
+          })
+          .then(result => console.log(result))
+          .catch(err => console.error(`Error: ${err.message}`))
     }
   
-    delete() {
-  
+    delete(name) {
+        return this.mongodb
+        .then(_ => {
+            return this.productsModel.deleteOne({
+              name: (name)
+            })
+          })
+          .then(result => console.log(result))
+          .catch(err => console.error(`Error: ${err.message}`))
     }
   }
   

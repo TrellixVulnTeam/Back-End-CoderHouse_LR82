@@ -3,6 +3,8 @@ const UsersDAOArchivo = require('./usuarios/UsersDAOArchivo')
 const ProductosDAOMysql = require('./productos/ProductsDAOMysql')
 const UsersDAOMysql = require('./usuarios/UsersDAOMysql')
 const ProductosDAOMongoDB = require('./productos/productosDAOMongoDB')
+const ProductosDAOFirebase = require('./productos/productsDAOFirebase')
+
 
 const getStorage = () => {
   const storage = process.env.STORAGE || 'archivo'
@@ -22,12 +24,16 @@ const getStorage = () => {
     case 'mongodb':
       return {
         products: new ProductosDAOMongoDB(),
-        users: new UsersDAOMongoDB()
+      }
+      break
+      case 'firebase':
+      return {
+        products: new ProductosDAOFirebase(),
       }
       break
     default:
       return {
-        products: new ProductosDAOArchivo(),
+        products: new ProductosDAOMongoDB(),
         users: new UsersDAOArchivo()
       }
       break
