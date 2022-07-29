@@ -1,11 +1,8 @@
-import admin from 'firebase-admin'
-import {readFile} from 'fs/promises'
+const admin = require('firebase-admin')
+const readFile = require('fs/promises')
 
-const serviceAccount = JSON.parse(
-    await readFile(
-        new URL('./key.json', import.meta.url)
-    )
-)
+const serviceAccount = './firebasekey.json'
+
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -15,4 +12,4 @@ admin.initializeApp({
 const db = admin.firestore()
 const query = db.collection('productos')
 
-export default query
+module.exports = query
