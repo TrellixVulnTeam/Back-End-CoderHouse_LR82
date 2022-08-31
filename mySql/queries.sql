@@ -1,3 +1,6 @@
+--- Para iniciar en el xamp es 
+mysql -u root
+
 --- Listar Base de datos
 
 SHOW DATABASES;
