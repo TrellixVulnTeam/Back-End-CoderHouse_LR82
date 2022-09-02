@@ -1,0 +1,28 @@
+{
+  "entities": {
+    "posts": {
+      "1": {
+        "id": "1",
+        "name": "John Doe"
+      },
+      "undefined": {
+        "0": {
+          "id": "1",
+          "author": "Rob",
+          "content": "Nice post!"
+        },
+        "1": {
+          "id": "2",
+          "author": "Jane",
+          "content": "I totally agree with you!"
+        }
+      }
+    }
+  },
+  "result": [
+    "1",
+    "My blog post",
+    "Short blogpost description",
+    "1"
+  ]
+}
