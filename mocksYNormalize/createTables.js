@@ -14,6 +14,7 @@ knex
         table.float('price')
         table.string('description', 255)
         table.integer('stock')
+        table.integer('image')
         table.integer('category_id').unsigned().references('categories.id')
         })
     })

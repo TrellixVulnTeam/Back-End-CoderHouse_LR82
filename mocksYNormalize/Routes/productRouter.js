@@ -1,6 +1,19 @@
 const { Router } = require('express')
 const db = require('../db/db')
 const productsRouter = Router()
+const faker = require('faker')
+
+const getRandom = (cant) => {
+    const arr = [];
+    for (let i = 0; i < cant; i++) {
+        const newObj = {};
+        newObj.name = faker.commerce.productName(); 
+        newObj.price = faker.commerce.price(); 
+        newObj.image = faker.image.image();
+        arr.push(newObj);
+    }
+    return arr;
+};
 
 const productsRouterFn = (io) => {
     productsRouter.get('/', (req,res) => {
@@ -19,15 +32,9 @@ const productsRouterFn = (io) => {
       })
       
       productsRouter.post('/', (req,res) => {
-          
         ////ACA VA EL FAKER.JS/////////////
-        const product = {
-              name: req.body.name,
-              price: req.body.price,
-              description: req.body.description,
-              stock: req.body.stock,
-              category_id: req.body.category_id
-          }
+        const cant = req.query.cant || 5
+        const product = getRandom(cant)
         /////////////ACA TERMINA/////////////////
           return db.from('products').insert(product)
               .then((productIds) => {
